@@ -1,0 +1,5 @@
+# Ignore compiled CUDA executables
+*.out
+*.exe
+*.bin
+*.run
