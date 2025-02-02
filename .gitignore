@@ -1,12 +1,5 @@
-
 # Ignore compiled CUDA executables
 *.out
 *.exe
 *.bin
 *.run
-01_vector_addition
-02_vector_addition_unified
-03_matrix_multiplication
-04_matrix_multiplication_tiled
-05_vector_addition_cuBLAS
-06_vector_multiplication_cuBLAS
