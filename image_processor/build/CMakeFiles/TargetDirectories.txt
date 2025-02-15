@@ -1,0 +1,3 @@
+/home/freyr5736/coding/cuda/image_processor/build/CMakeFiles/image_processor.dir
+/home/freyr5736/coding/cuda/image_processor/build/CMakeFiles/edit_cache.dir
+/home/freyr5736/coding/cuda/image_processor/build/CMakeFiles/rebuild_cache.dir
