@@ -102,9 +102,33 @@ int main() {
     // Convert to grayscale
     cuda::cvtColor(imgGpu, imgGpu, COLOR_BGR2GRAY);
 
-    // Apply Gaussian blur
-    auto gaussianFilter = cuda::createGaussianFilter(CV_8UC1, CV_8UC1, Size(3, 3), 10);
-    gaussianFilter->apply(imgGpu, imgGpu);
+    // Image Filtering
+
+    // Creates a Gaussian filter for smoothing the image
+    // Parameters:
+    // - CV_8UC1: Input image type (8-bit single-channel grayscale image)
+    // - CV_8UC1: Output image type (same as input in this case)
+    // - Size(3, 3): Kernel size (3x3 Gaussian filter)
+    // - 10: Standard deviation of the Gaussian kernel
+    // auto gaussianFilter = cuda::createGaussianFilter(CV_8UC1, CV_8UC1, Size(3, 3), 10);
+    // gaussianFilter->apply(imgGpu, imgGpu);
+
+    // Creates a Laplacian filter for edge detection
+    // Parameters:
+    // - CV_8UC1: Input image type (8-bit single-channel grayscale image)
+    // - CV_8UC1: Output image type (same as input in this case)
+    // - 3: Kernel size (applies a 3x3 Laplacian kernel)
+    // - 3: Border type (default is BORDER_DEFAULT, but here it's explicitly set)
+    // auto laplacianFilter = cuda::createLaplacianFilter(CV_8UC1, CV_8UC1, 3, 3);
+    // laplacianFilter->apply(imgGpu, imgGpu);
+
+    // Creates a morphological filter for performing morphological transformations
+    // Parameters:
+    // - MORPH_CLOSE: Type of morphological operation (closing: dilation followed by erosion)
+    // - CV_8UC1: Input image type (8-bit single-channel grayscale image)
+    // - 6: Kernel size (a 6x6 structuring element for morphological operations)
+    auto morpFilter = cuda::createMorphologyFilter(MORPH_CLOSE, CV_8UC1, 6);
+    morpFilter->apply(imgGpu, imgGpu);
 
     imgGpu.download(img); // Get processed image back from GPU
 
